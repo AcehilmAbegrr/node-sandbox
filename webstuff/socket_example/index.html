@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script src="/socket.io/socket.io.js"></script>
+        <title>Date and Time</title>
+        <script type="text/javascript">
+            let socket
+            function onload() {
+                socket = io.connect()
+                socket.on('timer', (data) => {
+                    document.getElementById('timer').innerHTML = data
+                })
+            }
+            function submitData() {
+                const data = document.getElementById('inputdata').value
+                socket.emit('submit', data)
+            }
+        </script>
+    </head>
+        <body onload="onload()">
+        <h1>Websocket page</h1>
+        <p>Date: <span id="timer"></span></p>
+        <form action="#">
+            <p>Data: <input type="text" id="inputdata"/>
+            <input type="button" onClick="submitData()">
+            </p>
+        </form>
+        </body>
+</html>

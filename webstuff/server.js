@@ -8,5 +8,5 @@ http.createServer((req, res) => {
     } else {
         res.end('Hello world')
     }
-}).listen(process.env.PORT, process.env.IP)
+}).listen(3000, 'localhost')
 console.log('Server is running!')
